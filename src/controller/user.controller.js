@@ -55,7 +55,7 @@ const login = async (request, response) => {
     const user = await User.findOne({ firstName });
     if (!user || !user.validatePassword(password)) {
       return response
-        .status(httpStatus.UNAUTHORIZED)
+        .status(httpStatus.BAD_REQUEST)
         .send({ message: "Invalid first name or password" });
     }
     let profilePic
