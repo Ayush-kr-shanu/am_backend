@@ -9,7 +9,9 @@ async function uploadFile(request, response) {
   const file = request.file;
 
   if (!file) {
-    return response.status(httpStatus.BAD_REQUEST).send({ message: "No file uploaded" });
+    return response
+      .status(httpStatus.BAD_REQUEST)
+      .send({ message: "No file uploaded" });
   }
 
   const filePath = file.path;
@@ -17,9 +19,11 @@ async function uploadFile(request, response) {
   const fileSize = file.size;
 
   // Validate folder input to prevent unauthorized folder access
-  const validFolders = ['profile-pic', 'video'];
+  const validFolders = ["profile-pic", "video"];
   if (!validFolders.includes(folder)) {
-    return response.status(httpStatus.BAD_REQUEST).send({ message: "Invalid folder" });
+    return response
+      .status(httpStatus.BAD_REQUEST)
+      .send({ message: "Invalid folder" });
   }
 
   try {
@@ -59,36 +63,30 @@ async function uploadFile(request, response) {
   }
 }
 
-function getFile(folderName, fileName, isRoute) {
-    // Construct the full key by combining folder name and file name
-    const keyName = `${folderName}/${fileName}`;
-  
-    const parameters = {
-      Bucket: bucketName,
-      Key: keyName,
-    };
+function getFile(fileName) {
+  // Construct the full key by combining folder name and file name
+  const keyName = fileName;
 
-    return new Promise((resolve, reject) => {
-      s3.getObject(parameters, function (error, data) {
-        if (error) {
-          // Log error or handle as needed
-          console.error("Error fetching file", error);
-          resolve(null);
-        } else {
-          if (isRoute) {
-            // Generate a signed URL for accessing the file
-            const s3url = s3.getSignedUrl('getObject', parameters);
-            resolve(s3url);
-          } else {
-            // Return the file content as base64
-            resolve(data.Body.toString("base64"));
-          }
-        }
-      });
+  const parameters = {
+    Bucket: bucketName,
+    Key: keyName,
+  };
+
+  return new Promise((resolve, reject) => {
+    s3.getObject(parameters, function (error, data) {
+      if (error) {
+        console.error("Error fetching file", error);
+        resolve(null);
+      } else {
+        // Generate a signed URL for accessing the file
+        const s3url = s3.getSignedUrl("getObject", parameters);
+        resolve(s3url);
+      }
     });
+  });
 }
 
 module.exports = {
   uploadFile,
-  getFile
+  getFile,
 };

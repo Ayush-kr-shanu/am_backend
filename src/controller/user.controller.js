@@ -60,7 +60,7 @@ const login = async (request, response) => {
     }
     let profilePic
     if(user.profilePicture){
-        profilePic = await getFile("profile-pic", user.profilePicture, true)
+        profilePic = await getFile(`profile-pic/${user.profilePicture}`, true)
     }
 
     const { access, refresh } = await generateAuthTokens(user);
