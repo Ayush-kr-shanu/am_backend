@@ -3,7 +3,7 @@ const { User } = require("../model");
 const { generateRandomPassword } = require("../utils/password");
 const { credentialEmail } = require("../utils/email");
 const { generateAuthTokens } = require("../middlewares/auth");
-const { uploadFileFun, getFile } = require("./file.controller");
+const { getFile } = require("./file.controller");
 
 const signup = async (request, response) => {
   try {
