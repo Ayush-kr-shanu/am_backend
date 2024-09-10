@@ -18,4 +18,13 @@ module.exports = {
     },
     FROM: process.env.EMAIL_FROM,
   },
+  // aws credentials
+  s3: {
+    accessKeyId: process.env.ACESS_KEY,
+    secretAccessKey: process.env.SECRET_KEY,
+    region: process.env.REGION,
+  },
+  bucketName: process.env.BUCKET_NAME,
+  //Jwt credentials
+  JWT_SECRET: process.env.JWT_SECRET
 };

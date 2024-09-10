@@ -23,7 +23,14 @@ const userModel = mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    bio: {
+        type: String,
+        maxLength: 600
+    },
+    profilePicture: {
+        type: String
+    },
 })
 
 // Hashing the password before saving it to the database
