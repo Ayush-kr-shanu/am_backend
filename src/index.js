@@ -38,8 +38,8 @@ const options = {
     cert: fs.readFileSync(certPath)
 };
 
-https.createServer(options, app).listen(443, '0.0.0.0', () => {
-    console.log('Server running with SSL on port 443');
+https.createServer(options, app).listen(config.PORT, () => {
+    console.log(`Server running with SSL on port: ${config.PORT}`);
 
     // Connect to the database after server starts
     dbConnection();
