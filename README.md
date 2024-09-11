@@ -37,26 +37,26 @@ This backend API is built with Node.js and Express, designed to handle various f
    ```
 
 3. **Enviroment Variables:**
-    PORT  = Any port
-    MONGODB_URI = your mongo url
+    PORT  = Any port <br>
+    MONGODB_URI = your mongo url <br>
 
     # Token secret
     JWT_SECRET = Your secret key
 
 
     # Mail jet secrets
-    SMTP_HOST=email host
-    SMTP_PORT= email port
-    SMTP_USERNAME= email username
-    SMTP_PASSWORD= password or secretkey
+    SMTP_HOST=email host <br>
+    SMTP_PORT= email port <br>
+    SMTP_USERNAME= email username <br>
+    SMTP_PASSWORD= password or secretkey <br>
     EMAIL_FROM= sender email
 
 
     # s3 keys
-    ACESS_KEY = your s3 acess key
-    SECRET_KEY = your s3 secret key
-    REGION = aws region
-    BUCKET_NAME = bucket name
+    ACESS_KEY = your s3 acess key <br>
+    SECRET_KEY = your s3 secret key <br>
+    REGION = aws region <br>
+    BUCKET_NAME = bucket name <br>
 
 4. **To start the server:**
     Command: 
