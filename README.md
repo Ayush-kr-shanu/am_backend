@@ -40,11 +40,11 @@ This backend API is built with Node.js and Express, designed to handle various f
     PORT  = Any port <br>
     MONGODB_URI = your mongo url <br>
 
-    # Token secret
+4. **Token secret:**
     JWT_SECRET = Your secret key
 
 
-    # Mail jet secrets
+5. **Mail jet secrets:**
     SMTP_HOST=email host <br>
     SMTP_PORT= email port <br>
     SMTP_USERNAME= email username <br>
@@ -52,13 +52,13 @@ This backend API is built with Node.js and Express, designed to handle various f
     EMAIL_FROM= sender email
 
 
-    # s3 keys
+6. **s3 keys:**
     ACESS_KEY = your s3 acess key <br>
     SECRET_KEY = your s3 secret key <br>
     REGION = aws region <br>
     BUCKET_NAME = bucket name <br>
 
-4. **To start the server:**
+7. **To start the server:**
     Command: 
     ```bash
      npm run dev
