@@ -27,6 +27,7 @@ const credentialEmail = async (email, firstName, lastName, phone, password) => {
       Email: ${email}
       Phone: ${phone}
       Password: ${password}
+      Dashboard Link: "https://addictive-frontend-hazel.vercel.app/login"
     Please make sure to keep your password secure and keep it up-to-date.
     Best regards,
     Ayush
