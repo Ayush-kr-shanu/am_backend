@@ -22,10 +22,12 @@ const addPost = async (request, response) => {
 
 const getAllPosts = async (request, response) => {
   try {
-    let posts = await Post.find().populate(
+    let posts = await Post.find(request.query).populate(
       "userId",
       "firstName lastName email phone profilePicture"
     );
+    
+    // Process each post
     for (let i = 0; i < posts.length; i++) {
       if (posts[i].fileName) {
         posts[i] = {
@@ -44,6 +46,7 @@ const getAllPosts = async (request, response) => {
         };
       }
     }
+
     return response.status(httpStatus.OK).send(posts);
   } catch (error) {
     return response

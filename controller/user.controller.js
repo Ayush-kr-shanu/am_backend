@@ -99,8 +99,40 @@ const updateUserDetail = async (request, response) => {
   }
 };
 
+const getUserById = async (request, response) => {
+  try {
+    const userId = request.params.id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return response
+       .status(httpStatus.NOT_FOUND)
+       .send({ message: "User not found" });
+    }
+    let profilePicUrl;
+    if(user.profilePicture){
+      profilePicUrl = await getFile(`profile-pic/${user.profilePicture}`, true)
+    }
+
+    let users = {
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      phone: user.phone,
+      bio: user.bio,
+      profilePicture: user.profilePicture,
+      profilePicUrl
+    }
+    response.send(users);
+  } catch (error) {
+    response.status(httpStatus.INTERNAL_SERVER_ERROR).send({ message: error });
+  }
+}
+
 module.exports = {
   signup,
   login,
   updateUserDetail,
+  getUserById
 };
