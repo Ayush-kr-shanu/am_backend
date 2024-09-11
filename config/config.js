@@ -1,8 +1,8 @@
 const dotenv = require("dotenv");
 const path = require("node:path");
 
-// Load environment variables from .env file
-dotenv.config({ path: path.join(__dirname, "../../.env") });
+// Load environment variables from.env file
+require("dotenv").config()
 
 module.exports = {
   PORT: process.env.PORT,
